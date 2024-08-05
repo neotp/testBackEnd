@@ -1,4 +1,4 @@
-package com.example.test.test.controller;
+package com.example.test.app.controller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.example.test.test.service.EmployeeService;
-import com.example.test.test.entity.Employee;
+import com.example.test.app.entity.Employee;
+import com.example.test.app.service.EmployeeService;
 
 @RestController
 @RequestMapping("/api/employees")

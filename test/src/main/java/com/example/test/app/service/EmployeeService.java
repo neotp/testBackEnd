@@ -1,10 +1,11 @@
-package com.example.test.test.service;
+package com.example.test.app.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.test.test.entity.Employee;
-import com.example.test.test.repository.EmployeeRepository;
+import com.example.test.app.entity.Employee;
+import com.example.test.app.repository.EmployeeRepository;
+
 import java.util.List;
 
 @Service

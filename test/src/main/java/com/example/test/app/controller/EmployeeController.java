@@ -24,16 +24,20 @@ public class EmployeeController {
         return ResponseEntity.ok(savedEmployee);
     }
 
+    //find department by id
     @GetMapping("/employees/{departmentId}")
     public ResponseEntity<List<Employee>> findEmployeesByDepartmentId(@PathVariable("departmentId") String departmentId) {
     List<Employee> employees = employeeService.findEmployeesByDepartmentId(departmentId);
     return ResponseEntity.ok(employees);
     }
 
+    //find employee by id
     @GetMapping("/employees/{employeeId}")
     public ResponseEntity<List<Employee>> findEmployeesByEmployeeId(@PathVariable("employeeId") String employeeId) {
     List<Employee> employees = employeeService.findEmployeesByHeadEmployeeId(employeeId);
     List<Employee> employeeLast = new ArrayList<>();
+
+    //check employeeId in department 
     if (employees == null || employees.isEmpty()) {
          employeeLast =  employeeService.findEmployeesByEmployeeId(employeeId);
     } else {

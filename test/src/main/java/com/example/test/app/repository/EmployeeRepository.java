@@ -12,7 +12,7 @@ import com.example.test.app.entity.Employee;
 @Repository
 public interface EmployeeRepository extends JpaRepository<Employee, String> {
 
-
+    //find Employee by departmentId
     @Query("SELECT e.employeeId , e.employeeName, e.mobileNo, e.startDate, d.departmentName,dh.employeeId"+
             "FROM Employee e "+
             "JOIN e.Department d"+
@@ -22,12 +22,14 @@ public interface EmployeeRepository extends JpaRepository<Employee, String> {
             "AND (terminateDate IS NULL OR terminateDate = '00000000')")
     List<Employee> findEmployeesByDepartmentId(@Param("departmentId") String departmentId);
     
+    //find Employee by id but to check Employee in department
     @Query("SELECT e "+
            "FROM DepartmentHeader dh"+
            "JOIN DepartmentDetail dd ON dh.departmentId = dd.departmentId "+
            "WHERE dh.employeeId = :employeeId")
     List<Employee> findEmployeesByHeadEmployeeId(@Param("employeeId") String employeeId);
 
+   //if Employee have department 
     @Query("SELECT e.employeeId ,e.employeeName ,e.mobileNo"+
            "FROM Employee e"+
            "JOIN DepartmentDetail dd ON e.employeeId = dd.employeeId "+
@@ -35,6 +37,7 @@ public interface EmployeeRepository extends JpaRepository<Employee, String> {
            "WHERE dh.employeeId = :employeeId")
     List<Employee> findEmployeesByEmployeeId(@Param("employeeId") String employeeId);
 
+     //if Employee dont have department 
     @Query("SELECT e.employeeId ,e.employeeName ,e.mobileNo , e.startDate, d.departmentName"+
            "FROM Employee e"+
            "JOIN e.Department d"+
